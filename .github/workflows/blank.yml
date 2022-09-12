@@ -35,4 +35,7 @@ jobs:
         run: psql -h localhost -d testDB -U admin_docker -c 'SELECT 1;'
         env:
           PGPASSWORD: postgres
+      - name: Run migrations
+        run: psql -f init_db.sql postgres://admin_docker:postgres@localhost:5432/testDB
+
       
