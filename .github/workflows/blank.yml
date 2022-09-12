@@ -31,4 +31,6 @@ jobs:
       - name: inspect containers
         run: |
           docker ps
+          docker exec -it $(docker ps -q) bash
+          psql -U admin_docker --db testDB --password postgres
       
