@@ -32,7 +32,7 @@ jobs:
         run: |
           docker ps
       - name: Query database
-        run: psql -h postgres -d testDB -U admin_docker -c 'SELECT 1;'
+        run: psql -h localhost -d testDB -U admin_docker -c 'SELECT 1;'
         env:
           PGPASSWORD: postgres
       
