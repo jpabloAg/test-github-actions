@@ -1,22 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "forecast.Api", "forecast.Api\forecast.Api.csproj", "{214D724C-A170-43BB-AED6-5BAD430A9CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "forecast.Api", "forecast.Api\forecast.Api.csproj", "{214D724C-A170-43BB-AED6-5BAD430A9CE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForecastTest", "ForecastTest\ForecastTest.csproj", "{2F0193C8-17FB-4BF8-9812-CADAAB60A80A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{214D724C-A170-43BB-AED6-5BAD430A9CE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{214D724C-A170-43BB-AED6-5BAD430A9CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{214D724C-A170-43BB-AED6-5BAD430A9CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{214D724C-A170-43BB-AED6-5BAD430A9CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F0193C8-17FB-4BF8-9812-CADAAB60A80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F0193C8-17FB-4BF8-9812-CADAAB60A80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F0193C8-17FB-4BF8-9812-CADAAB60A80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0193C8-17FB-4BF8-9812-CADAAB60A80A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5D3EB0E-00D6-4FEA-A00F-79481DB7066B}
 	EndGlobalSection
 EndGlobal

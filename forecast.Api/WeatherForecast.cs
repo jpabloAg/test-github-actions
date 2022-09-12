@@ -2,6 +2,7 @@ namespace forecast.Api;
 
 public class WeatherForecast
 {
+    public string Id { get; set; }
     public DateTime Date { get; set; }
 
     public int TemperatureC { get; set; }
