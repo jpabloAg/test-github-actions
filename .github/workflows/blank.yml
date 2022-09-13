@@ -53,5 +53,6 @@ jobs:
         
       - name: checkout docker database
         run: psql -h localhost -d testDB -U admin_docker -c 'SELECT * FROM "WeatherForecasts";'
-
+        env:
+          PGPASSWORD: postgres
       
