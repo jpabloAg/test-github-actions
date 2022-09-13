@@ -29,6 +29,17 @@ namespace ForecastTest
             return forecasts;
         }
 
+        private WeatherForecast CreateNewWeatherForecast()
+        {
+            return new WeatherForecast()
+            {
+                Id = "4",
+                Date = DateTime.UtcNow,
+                TemperatureC = 589,
+                Summary = "Verano"
+            };
+        }
+
         [Fact]
         public async Task Get_weatherforecasts_test()
         {
@@ -49,6 +60,33 @@ namespace ForecastTest
             Assert.True(forecastsResponse.Any());
             Assert.Equal(forecasts.Where(x => x.Id == "1").FirstOrDefault().Summary,
                          forecastsResponse.Where(x => x.Id == "1").FirstOrDefault().Summary);
+        }
+
+        [Fact]
+        public async Task Post_weatherforecasts_test()
+        {
+            // Arrange
+            WeatherForecast newForecast = CreateNewWeatherForecast();
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            HttpContent content = new StringContent(JsonSerializer.Serialize(newForecast), Encoding.UTF8, "application/json");
+            
+            // Act
+            await this.TestClient.PostAsync("/weatherforecast", content);
+
+            HttpResponseMessage response = await this.TestClient.GetAsync("/weatherforecast");
+            var contentResult = await response.Content.ReadAsStringAsync();
+            WeatherForecast forecastsCreated = JsonSerializer.Deserialize<IEnumerable<WeatherForecast>>(contentResult, options)
+                                                                .FirstOrDefault(x => x.Id.Equals(newForecast.Id));
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+            Assert.NotNull(forecastsCreated);
+            Assert.Equal(newForecast.Summary, forecastsCreated.Summary);
+            Assert.Equal(newForecast.TemperatureC, forecastsCreated.TemperatureC);
+            Assert.Equal(newForecast.Date.Month, forecastsCreated.Date.Month);
         }
     }
 }

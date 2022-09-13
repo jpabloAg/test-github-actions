@@ -21,4 +21,12 @@ public class WeatherForecastController : ControllerBase
         var forecasts = await _context.WeatherForecasts.ToListAsync();
         return Ok(forecasts);
     }
+
+    [HttpPost()]
+    public async Task<ActionResult<string>> Post(WeatherForecast weather)
+    {
+        await _context.WeatherForecasts.AddAsync(weather);
+        await _context.SaveChangesAsync();
+        return weather.Id;
+    }
 }
