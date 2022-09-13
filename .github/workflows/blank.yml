@@ -36,6 +36,19 @@ jobs:
         env:
           PGPASSWORD: postgres
       - name: Run migrations
-        run: psql -f init_db.sql postgres://admin_docker:postgres@localhost:5432/testDB
+        run: |
+          psql -f scripts/firstMigration.sql postgres://admin_docker:postgres@localhost:5432/testDB
+          psql -f scripts/Populate_db.sql postgres://admin_docker:postgres@localhost:5432/testDB
+          
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
 
       
